@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- link your css to browser   -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <!-- normalize your web page -->
+    <link rel="stylesheet" href="css/Normalize.css" />
+    <!-- add a new font (work sans)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- add font Awesome -->
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link
+      rel="shortcut icon"
+      href="https://img1.pnghut.com/1/7/4/VAQzDGc80a/favicon-search-box-web-engine-world-wide-iconfinder.jpg"
+      type="image/x-icon"
+    />
+    <title>Countries API</title>
+  </head>
+  <body class="darker">
+    <!-- start header -->
+    <header class="dark-header">
+      <div class="container">
+        <h2>Where in the World?</h2>
+        <div class="dark-mode">
+          <i class="fa-solid fa-moon"></i>
+          <label for="dark">Light Mode</label>
+        </div>
+      </div>
+    </header>
+    <!-- end header -->
+    <!-- start main section -->
+    <section class="search-section">
+      <div class="container">
+        <div>
+          <i id="dark" class="fa-solid fa-magnifying-glass"></i>
+          <input
+            id="search"
+            type="search"
+            autofocus
+            placeholder="Search for a country"
+          />
+        </div>
+        <select name="country-name" id="Contries">
+          <option value="ALL">ALL</option>
+          <option value="Africa">Africa</option>
+          <option value="Americas">Americas</option>
+          <option value="Asia">Asia</option>
+          <option value="Europe">Europe</option>
+          <option value="Oceania">Oceania</option>
+        </select>
+      </div>
+    </section>
+    <main class="container">
+      <!-- <article id="Afghanistan">
+        <figure>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Flag_of_the_Taliban.svg/320px-Flag_of_the_Taliban.svg.png"
+            alt="flag"
+          />
+          <figcaption>
+            <h3>Afghanistan</h3>
+            <p>Population : <span>40218234</span></p>
+            <p>Region: <span>Asia</span></p>
+            <p>Capital:Kabul</p>
+          </figcaption>
+        </figure>
+      </article> -->
+    </main>
+
+    <!-- end main section -->
+    <script src="main.js"></script>
+  </body>
+</html>
