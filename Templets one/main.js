@@ -5,6 +5,7 @@ const darkIcon = document.querySelector("header .container .dark-mode i");
 const header = document.querySelector("header");
 const body = document.querySelector("body");
 
+
 function toggleDarkMode() {
   header.classList.toggle("dark-header");
 
@@ -13,8 +14,6 @@ function toggleDarkMode() {
   body.classList.toggle("darker");
 }
 darkIcon.addEventListener("click", toggleDarkMode);
-
-
 
 // Fetch data from the API
 
@@ -42,11 +41,10 @@ function fetchALLcountryDataFromAPI() {
     })).then(() => {
       // add more info when you click on cards
       const allCards = document.querySelectorAll("main article");
-      // console.log(allCards);
+
       allCards.forEach(element => {
         element.addEventListener("click", () => {
-          console.log(1);
-          console.log(window.location.href = `index1.html?name= + ${element.getAttribute("id")}`);
+          window.location.href = `index1.html?name= + ${element.getAttribute("id")}`;
         });
       });
 
@@ -55,20 +53,20 @@ function fetchALLcountryDataFromAPI() {
 fetchALLcountryDataFromAPI();
 
 
-
 //implement a search function
 
 function searchFunction() {
-  const search = document.getElementById('search');
 
-  search.addEventListener('input', e => {
-    const keyword = e.target.value.toLowerCase();
+  const search = document.getElementById('search');
+  const debouncedSearch = _.debounce((keyword) => {
     const main = document.querySelector("main");
+
     fetch(`https://restcountries.com/v2/name/${keyword}`)
       .then((response) => (response.json()))
       .then((data) => {
+        console.log(data[0]);
         let carders = `
-            <article>
+            <article id="${data[0].name}">
               <figure>
                 <img src="${data[0].flags.png}" alt="flag" />
                 <figcaption>
@@ -79,12 +77,27 @@ function searchFunction() {
                 </figcaption>
               </figure>
             </article>`;
+
         main.innerHTML = carders;
+      }).then(() => {
+        // add more info when you click on cards
+        const allCards = document.querySelectorAll("main article");
+
+        allCards.forEach(element => {
+          element.addEventListener("click", () => {
+            window.location.href = `index1.html?name= + ${element.getAttribute("id")}`;
+          });
+        });
+
       }).catch(() => {
         main.innerHTML = "";
         fetchALLcountryDataFromAPI();
-        addMoreInfoToClickedCard();
       });
+  }, 500);
+
+  search.addEventListener('input', e => {
+    const keyword = e.target.value.toLowerCase();
+    debouncedSearch(keyword);
   });
 }
 searchFunction();
@@ -119,15 +132,23 @@ regionFilter.addEventListener('change', e => {
 
           // //add more info when you click on cards
 
-          // document.querySelector("#" + element.name).addEventListener("click", () => {
-          //   // Open the new HTML page and pass the information to it
-          //   window.location.href = "country-details.html?name=" + element.name;
+
           // });
         } else if (region == "ALL") {
           window.location.reload();
         }
 
       });
+    }).then(() => {
+      // add more info when you click on cards
+      const allCards = document.querySelectorAll("main article");
+
+      allCards.forEach(element => {
+        element.addEventListener("click", () => {
+          window.location.href = `index1.html?name= + ${element.getAttribute("id")}`;
+        });
+      });
+
     });
 
 

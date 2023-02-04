@@ -65,6 +65,8 @@ function addMoreInfoToClickedCard() {
 }
 addMoreInfoToClickedCard();
 
+
+
 //add functionality to btn 
 
 const btn = document.getElementById("btn");
